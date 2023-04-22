@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE ">I-ARTICLE</title>
+  <link rel="icon" href="https://istad.co/resources/img/logo_md.png" />
+  <th:block th:replace="~{fragments/styles}"></th:block>
+  <th:block layout:fragment="substyles">
+    <!-- individual web page styles  -->
+  </th:block>
+</head>
+<body>
+
+<!--<th:block th:replace=""></th:block>-->
+
+<div th:replace="~{fragments/navbar}"></div>
+
+<main class="container" layout:fragment="main-content">
+  <!-- individual web page content  -->
+</main>
+
+<div th:replace="~{fragments/footer}"></div>
+
+<th:block layout:fragment="subscript">
+  <!-- individual web page script  -->
+</th:block>
+<th:block th:replace="~{fragments/scripts}"></th:block>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master}"
+>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<main class="px-3 container"  layout:fragment="main-content">
+    <!--  Welcome to start  -->
+<!--    <div th:replace="~{fragments/welcome}"></div>-->
+    <!--  End welcome  -->
+
+    <!--  Card  -->
+    <div class="album py-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-1 g-3">
+
+                    <div class="col" th:each="article : ${articles}" th:object="${article}">
+                        <div
+                                th:replace="~{fragments/card::feed(*{uuid},*{title},*{thumbnail},*{author},*{description},*{categories})}"
+                        ></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card  border-0">
+
+                    <div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://blog.dlg.galileo.usg.edu/wp-content/uploads/2011/01/rab1975-0660-300x258.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://img.freepik.com/premium-psd/school-admission-banner-poster-flyer-school-ad_264881-222.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/business-ads-design-template-be6d9131564f6f8d391ae81eb3ce55dc_screen.jpg?ts=1613467699" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <h3 class="card-header">
+                        Popular Category: <span th:text="${categories.size()}"></span>
+                    </h3>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <a class="list-group-item border-1"
+                               th:each="category : ${categories}"
+                               th:href="@{/categories/{id}(id=${category.id})}"
+                               th:text="${category.name}"
+                            >An item</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/article/new" class="btn btn-primary btn-add  rounded-pill  text-center m-3 " style="width: 50px; height: 50px;position: fixed; right: 0; bottom: 0"> <i class="bi bi-plus-circle text-lg-center d-flex justify-content-center align-items-center " style="margin-top: 10px"></i></a>
+    <!--  End card  -->
+</main>
+</body>
+</html>
