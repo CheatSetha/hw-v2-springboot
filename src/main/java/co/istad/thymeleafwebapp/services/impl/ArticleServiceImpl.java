@@ -69,11 +69,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public boolean deleteArticle(String uuid) {
-        Article article = this.getArticle(uuid);
-        staticRepository.getArticles().remove(article);
-        System.out.println("Article delete successful");
-        return true;
+    public void deleteArticle(String uuid) {
+        Article article_id = this.getArticle(uuid);
+        staticRepository.getArticles().remove(article_id);
+
+
     }
 
     @Override

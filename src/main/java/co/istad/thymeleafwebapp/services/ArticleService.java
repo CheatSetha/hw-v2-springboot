@@ -18,7 +18,7 @@ public interface ArticleService {
 
     List<Article> getArticleByAuthor(Author author);
 
-    boolean deleteArticle(String uuid);
+    void deleteArticle(String uuid);
 
     Integer getIndex(Article article);
 

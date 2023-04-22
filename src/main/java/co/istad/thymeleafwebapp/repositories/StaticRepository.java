@@ -32,8 +32,8 @@ public class StaticRepository {
     void init() {
         Random random = new Random();
         Author author = new Author(
-                1, "setha cheat",
-                "Setha", "male",
+                1, "Cheat Setha",
+                "寂しい男", "male",
                 "setha@gmail.com",
                 faker.address().fullAddress() + ", " + faker.country().name(),
                 "https://api.duniagames.co.id/api/content/upload/file/15291419751619402938.jpg",
@@ -48,7 +48,16 @@ public class StaticRepository {
                 "https://preview.redd.it/nugh7xj043o21.png?auto=webp&s=b4c883e131cf72089cf6fe3818a06f963ede6887",
                 "https://pbs.twimg.com/media/FoHXg5caUAEFrUq?format=jpg&name=large",
                " https://pbs.twimg.com/media/EuABFpuVcAEZmIt.jpg",
-                "https://img.cdn-pictorem.com/uploads/collection/E/EF5MND10RMF/900_Coolbits-Art_monkey13.jpg"
+                "https://img.cdn-pictorem.com/uploads/collection/E/EF5MND10RMF/900_Coolbits-Art_monkey13.jpg",
+                "https://varnam.my/wp-content/uploads/2021/01/FB_IMG_1605666747087-2.jpg.webp",
+                "https://fashionista.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk2ODk2NjgzODEwODkxMDEx/rose-blackpink-sulwhasoo-promo.jpg",
+                "https://w0.peakpx.com/wallpaper/45/495/HD-wallpaper-tzuyu-twice.jpg",
+                "https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTIyN15BMl5BanBnXkFtZTYwNzUzOTA2._V1_FMjpg_UX1000_.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg"
+
+
+
+
 
 
         ));
@@ -63,7 +72,8 @@ public class StaticRepository {
                 "/resources/img/default/8.jpeg",
                 "/resources/img/default/9.webp",
                 "/resources/img/default/10.webp",
-                "/resources/img/default/11.jpeg"
+                "/resources/img/default/11.jpeg",
+                "/resources/img/default/12.jpeg"
 
         ));
         List<String > thumnailImages = new ArrayList<>(List.of(
@@ -97,8 +107,11 @@ public class StaticRepository {
                         faker.name().username(), gender.get(random.nextInt(2)),
                         faker.internet().safeEmailAddress(),
                         faker.address().fullAddress() + ", " + faker.country().name(),
-                        avatars.get(random.nextInt(0, avatars.size())),
-                        coverImages.get(random.nextInt(0, coverImages.size()))
+                        //avatars.get(random.nextInt(0, avatars.size())),
+                        avatars.get(i),
+                        coverImages.get(i)
+                       // coverImages.get(random.nextInt(0, coverImages.size())
+
                 ));
             }
         }};
@@ -112,16 +125,19 @@ public class StaticRepository {
 
         articles = new ArrayList<>() {{
 
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < 11; i++) {
 
                 add(
                         new Article(
                                 UUID.randomUUID(),
                                 faker.book().title(),
 //                                "/resources/img/default/" + (i%2==0 ? "1":2) + ".jpg",
-                                thumnailImages.get(random.nextInt(0, thumnailImages.size())),
+
+                                thumnailImages.get(i),
                                 authors.get(random.nextInt(authors.size())),
-                                faker.lorem().paragraphs(20).toString(),
+
+//                                10 sentences
+                                faker.lorem().paragraph(10),
                                 categories.stream().filter(cat -> cat.getId().equals(random.nextInt(categories.size())))
                                         .collect(Collectors.toList())
                         )
